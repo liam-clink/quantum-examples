@@ -10,8 +10,10 @@ project(
 cpp = meson.get_compiler('cpp')
 
 # (Meson requires an absolute path for find_library().)
-cuba_libdir = meson.current_source_dir() + './cuba/lib/'
-cuba = cpp.find_library('cuba', dirs : cuba_libdir) # ./lib/libA.lib
+cuba_libdir = meson.current_source_dir() + '/cuba/lib/'
+message(cuba_libdir)
+# There should not be extension on library
+cuba = cpp.find_library('libcuba', dirs : cuba_libdir, static: true)
 cuba_include = include_directories('cuba/include')
 
 
