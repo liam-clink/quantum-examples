@@ -10,24 +10,24 @@ project(
 cpp = meson.get_compiler('cpp')
 
 # (Meson requires an absolute path for find_library().)
-cuba_libdir = meson.current_source_dir() + '/cuba/lib/'
-message(cuba_libdir)
+libdir = meson.current_source_dir() + '/third-party/build/lib/'
+message(libdir)
 # There should not be extension on library
-cuba = cpp.find_library('cuba', dirs : cuba_libdir, static: true)
-cuba_include = include_directories('cuba/include')
+gsl = cpp.find_library('gsl', dirs : libdir, static: true)
+include = include_directories('third-party/build/include')
 
 
 
 project_source_files = ['src/main.cpp']
 
-project_dependencies = [cuba]
+project_dependencies = [gsl]
 
 build_args = ['']
 
 project_target = executable(
     meson.project_name(),
     project_source_files,
-    include_directories: [cuba_include],
+    include_directories: [include],
     dependencies: project_dependencies,
     install: true,
     c_args: build_args,
