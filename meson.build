@@ -13,7 +13,7 @@ cpp = meson.get_compiler('cpp')
 cuba_libdir = meson.current_source_dir() + '/cuba/lib/'
 message(cuba_libdir)
 # There should not be extension on library
-cuba = cpp.find_library('libcuba', dirs : cuba_libdir, static: true)
+cuba = cpp.find_library('cuba', dirs : cuba_libdir, static: true)
 cuba_include = include_directories('cuba/include')
 
 
